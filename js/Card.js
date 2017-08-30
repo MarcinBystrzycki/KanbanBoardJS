@@ -18,7 +18,7 @@ function Card(id, name) {
 			$.ajax({
 				url: baseUrl + '/card/' + self.id,
 				method: 'DELETE',
-				success: function() {
+				success: function(response) {
 					self.$element.remove();
 				}
 			});
