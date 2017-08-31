@@ -31,7 +31,7 @@ function Column(id, name) {
 				},
 				success: function(response) {
 					//create a new client side card
-					var card = new Card(response.id, cardName)
+					var card = new Card(response.id, cardName);
 					self.addCard(card);
 				}
 			});
@@ -59,6 +59,6 @@ Column.prototype = {
 			success: function(response) {
 				self.$element.remove();
 			}
-		})
+		});
 	}
 };

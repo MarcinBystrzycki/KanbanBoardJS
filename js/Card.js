@@ -11,21 +11,20 @@ function Card(id, name) {
 		var $card = $('<li>').addClass('card');
 		var $cardDescription = $('<p>').addClass('card-description').text(self.name);
 		var $cardDelete = $('<button>').addClass('btn-delete').text('x');
+		var $cardRename = $('<button>').addClass('btn-rename').text('R');
 
 		//adding event
 		$cardDelete.click(function() {
-			var self = this;
-			$.ajax({
-				url: baseUrl + '/card/' + self.id,
-				method: 'DELETE',
-				success: function(response) {
-					self.$element.remove();
-				}
-			});
+			self.removeCard();
 		});
 
+		$cardRename.click(function() {
+			self.renameCard(prompt("Rename your card"));
+		});
+
+
 		//card construction
-		$card.append($cardDelete).append($cardDescription);
+		$card.append($cardDelete).append($cardDescription).append($cardRename);
 
 		//returning created card
 		return $card;
@@ -35,6 +34,27 @@ function Card(id, name) {
 //adding function (removing card) to card prototype
 Card.prototype = {
 	removeCard: function() {
-		this.$element.remove();
-	}
-};
+    	var self = this;
+    	$.ajax({
+      		url: baseUrl + '/card/' + self.id,
+      		method: 'DELETE',
+      		success: function(){
+        		self.$element.remove();
+    	  	}
+    	});
+    },
+    renameCard: function(newName) {
+    	var self = this;
+    	$.ajax({
+    		url: baseUrl + '/card/' + self.id,
+    		method: 'PUT',
+    		data: {
+    			name: newName,
+    			bootcamp_kanban_column_id: self.id
+    		},
+    		success: function() {
+   				self.name = newName;
+    		}
+    	});
+    }
+}

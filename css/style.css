@@ -15,9 +15,6 @@ h2 {
   text-decoration: underline;
   margin: 15px 0; }
 
-.column-container {
-  height: 100vh; }
-
 .column {
   position: relative;
   border: 1px solid lightgrey;
@@ -56,6 +53,21 @@ h2 {
   top: 0;
   right: 0; }
   .btn-delete:hover {
+    background-color: black;
+    color: white; }
+
+.btn-rename {
+  background-color: white;
+  color: black;
+  border: none;
+  height: 15px;
+  width: 15px;
+  font-size: 10px;
+  padding: 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;}
+  .btn-rename:hover {
     background-color: black;
     color: white; }
 
