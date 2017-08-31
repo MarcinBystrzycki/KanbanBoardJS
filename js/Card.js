@@ -49,11 +49,7 @@ Card.prototype = {
     		url: baseUrl + '/card/' + self.id,
     		method: 'PUT',
     		data: {
-    			name: newName,
-    			bootcamp_kanban_column_id: self.id
-    		},
-    		success: function() {
-   				self.name = newName;
+    			name: newName
     		}
     	});
     }
