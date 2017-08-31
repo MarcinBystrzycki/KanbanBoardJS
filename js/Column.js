@@ -36,6 +36,9 @@ function Column(id, name) {
 				}
 			});
 		});
+		$columnTitle.click(function() {
+			self.renameColumn();
+		})
 
 		//column construction
 		$column.append($columnTitle).append($columnDelete).append($columnAddCard).append($columnCardList);
@@ -46,7 +49,7 @@ function Column(id, name) {
 }
 
 
-//adding two functions (1) adding card 2) removing column) to column prototype
+//adding functions to column prototype
 Column.prototype = {
 	addCard: function(card) {
 		this.$element.children('ul').append(card.$element);
@@ -60,5 +63,16 @@ Column.prototype = {
 				self.$element.remove();
 			}
 		});
+	},
+	renameColumn: function() {
+		var self = this;
+		var newName = '_' + prompt('Rename your column') + '_';
+		$.ajax({
+			url: baseUrl + '/column/' + self.id,
+			method: 'PUT',
+			data: {
+				name: newName
+			}
+		})
 	}
 };

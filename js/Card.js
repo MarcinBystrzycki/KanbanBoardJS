@@ -19,7 +19,7 @@ function Card(id, name) {
 		});
 
 		$cardRename.click(function() {
-			self.renameCard(prompt("Rename your card"));
+			self.$element.renameCard(prompt("Rename your card"));
 		});
 
 

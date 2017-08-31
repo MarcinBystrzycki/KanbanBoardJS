@@ -26,6 +26,11 @@ h2 {
   .column ul {
     padding-top: 10px; }
 
+.column-title:hover {
+  color: blue;}
+.column-title:focus {
+  color: black;}
+
 .create-column {
   background-color: blue;
   color: white;
