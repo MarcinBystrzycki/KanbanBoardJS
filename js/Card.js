@@ -11,7 +11,7 @@ function Card(id, name) {
 		var $card = $('<li>').addClass('card');
 		var $cardDescription = $('<p>').addClass('card-description').text(self.name);
 		var $cardDelete = $('<button>').addClass('btn-delete').text('x');
-		var $cardRename = $('<button>').addClass('btn-rename').text('R');
+		var $cardRename = $('<button>').addClass('btn-rename').append('<i class="fa fa-pencil"></i>');
 
 		//adding event
 		$cardDelete.click(function() {

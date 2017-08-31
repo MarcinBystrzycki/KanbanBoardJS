@@ -8,11 +8,12 @@ function Column(id, name) {
 
 	function createColumn() {
 		//creating elements of a column
-		var $column = $('<div>').addClass('column col-md-3');
+		var $column = $('<div>').addClass('column col-md-4 col-sm-6 col-xs-12');
 		var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
 		var $columnCardList = $('<ul>').addClass('column-card-list');
 		var $columnDelete = $('<button>').addClass('btn-delete').text('x');
-		var $columnAddCard = $('<button>').addClass('add-card').text('Add a card');
+		var $columnAddCard = $('<button>').addClass('add-card').text('Add card');
+		var $columnRename = $('<button>').addClass('btn-rename rename-position').append('<i class="fa fa-pencil"></i>');
 
 		//adding two events
 		$columnDelete.click(function() {
@@ -36,12 +37,12 @@ function Column(id, name) {
 				}
 			});
 		});
-		$columnTitle.click(function() {
-			self.renameColumn();
+		$columnRename.click(function() {
+			self.renameColumn('__' + prompt('Enter your column name'));
 		})
 
 		//column construction
-		$column.append($columnTitle).append($columnDelete).append($columnAddCard).append($columnCardList);
+		$column.append($columnTitle).append($columnDelete).append($columnRename).append($columnAddCard).append($columnCardList);
 
 		//returning created column
 		return $column;
@@ -64,14 +65,17 @@ Column.prototype = {
 			}
 		});
 	},
-	renameColumn: function() {
+	renameColumn: function(name) {
 		var self = this;
-		var newName = '_' + prompt('Rename your column') + '_';
 		$.ajax({
 			url: baseUrl + '/column/' + self.id,
 			method: 'PUT',
 			data: {
-				name: newName
+				name: name
+			},
+			success: function(response) {
+				self.$element.children('.column-title').text(name);
+				self.name = name;
 			}
 		})
 	}
