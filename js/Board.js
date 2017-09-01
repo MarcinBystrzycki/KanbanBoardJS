@@ -12,6 +12,10 @@ function initSortable() {
 		connectWith: 'column-card-list',
 		placeholder: 'card-placeholder'
 	}).disableSelection();
+	$('.column-container').sortable({
+		connectWith: '.column-container',
+		placeholder: 'column-placeholder'
+	}).disableSelection();
 }
 
 $('.create-column').click(function() {

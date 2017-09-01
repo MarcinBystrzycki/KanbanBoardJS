@@ -169,6 +169,11 @@ ul {
   height: 30px;
   margin: 5px 0; }
 
+.column-placeholder {
+  border: 2px dashed black;
+  width: 33.33%;
+  height: auto; }
+
 @media (min-width: 768px) {
   .column {
     width: 42%; } }
