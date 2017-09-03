@@ -9,7 +9,7 @@ var board = {
 
 function initSortable() {
 	$('.column-card-list').sortable({
-		connectWith: 'column-card-list',
+		connectWith: '.column-card-list',
 		placeholder: 'card-placeholder'
 	}).disableSelection();
 	$('.column-container').sortable({

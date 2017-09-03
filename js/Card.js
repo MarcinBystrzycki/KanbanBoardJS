@@ -19,7 +19,7 @@ function Card(id, name) {
 		});
 
 		$cardRename.click(function() {
-			self.$element.renameCard(prompt("Rename your card"));
+			self.renameCard(prompt("Rename your card"));
 		});
 
 
@@ -50,6 +50,9 @@ Card.prototype = {
     		method: 'PUT',
     		data: {
     			name: newName
+    		},
+    		success: function() {
+    			self.$element.children('.column-title').text(newName);
     		}
     	});
     }
